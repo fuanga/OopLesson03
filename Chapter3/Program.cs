@@ -11,18 +11,26 @@ namespace Chapter3
 
         static void Main(string[] args)
         {
-            var list = new List<string>
+            var names = new List<string>
             {
                 "Tokyo","New Delhi","Bangkok","London","Paris","Berlin","Canberra","HongKong",
             };
 
-            //list.ForEach(s => Console.WriteLine(s));
+            IEnumerable<string> query = names.Where(s => s.Length <= 5) ;
+            foreach(var item in query)
+            
+                {
+                    Console.WriteLine(item);
+                }
+            Console.WriteLine("-------------");
 
-             list.ConvertAll(s => s.ToUpper()).ForEach(s=>Console.WriteLine(s));
-            //foreach (var item in name)
-            //{
-            //    Console.WriteLine(item);
-            //}
+            names[0] = "Osaka";
+            foreach (var item in query) 
+            {
+                Console.WriteLine(item);
+            }
+               
+            
            
 
         }
