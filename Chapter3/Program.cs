@@ -11,27 +11,19 @@ namespace Chapter3
 
         static void Main(string[] args)
         {
-            var names = new List<string>
-            {
-                "Tokyo","New Delhi","Bangkok","London","Paris","Berlin","Canberra","HongKong",
-            };
+            var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
 
-            IEnumerable<string> query = names.Where(s => s.Length <= 5) ;
-            foreach(var item in query)
-            
-                {
-                    Console.WriteLine(item);
-                }
-            Console.WriteLine("-------------");
+            var exists = numbers.Exists(s => s%8 == 0 || s%9==0 );
 
-            names[0] = "Osaka";
-            foreach (var item in query) 
+            if (exists == true)
             {
-                Console.WriteLine(item);
+                Console.WriteLine("あったよ");
             }
-               
+            else
+            {
+                Console.WriteLine("なかったよ");
+            }
             
-           
 
         }
     }
