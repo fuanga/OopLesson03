@@ -13,7 +13,8 @@ namespace Chapter3
         {
             var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
 
-            IEnumerable<int> query = numbers.Where(s => s >= 50);
+            IE = numbers.Select(s => s * 2);
+
             foreach (var s in query)
             {
                 Console.WriteLine(s);
