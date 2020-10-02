@@ -10,6 +10,11 @@ namespace Chapter4
     {
         public int Year { get; private set; }
         public int Month { get; private set; }
+        public bool IsCentury {
+            get {
+                return 2001 <= Year && Year <= 2100;
+            }
+        }
 
 
         public YearMonth(int year, int month)
@@ -17,6 +22,27 @@ namespace Chapter4
             this.Year = year;
             this.Month = month;
         }
+
+        public YearMonth AddOneMonth()
+        {
+            if (Month == 12)
+            {
+                return new YearMonth(Year++, 1);
+            }
+            else
+            {
+                return new YearMonth(Year, Month++);
+            }
+            
+            
+        }
+
+        public override string ToString()
+        {
+            return $"{Year}年{Month}月";
+        }
+
+
 
     }
 }
