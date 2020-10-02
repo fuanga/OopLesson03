@@ -10,7 +10,7 @@ namespace Chapter4
     {
         public int Year { get; private set; }
         public int Month { get; private set; }
-        public bool IsCentury {
+        public bool Is21Century {
             get {
                 return 2001 <= Year && Year <= 2100;
             }
