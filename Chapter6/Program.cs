@@ -8,55 +8,18 @@ using System.Threading.Tasks;
 
 namespace Chapter6
 {
+    class Book
+    {
+        public string Title { get; set; }
+        public int Price { get; set; }
+        public int Pages { get; set; }
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            var numbers = new int[] { 5, 10, 17, 9, 3, 21, 10, 40, 21, 3, 35 };
-            //6.1-1
-            Console.WriteLine("______________6.1-1______________");
-            Console.WriteLine(numbers.Max());
-
-            //6.1-2
-            Console.WriteLine();
-            Console.WriteLine("______________6.1-2______________");
-            int pos = numbers.Length - 2;
-            foreach(var number in numbers.Skip(pos))
-            {
-                Console.Write(number + " ");
-            }
-            Console.WriteLine();
-            //6.1-3
-            Console.WriteLine();
-            Console.WriteLine("______________6.1-3______________");
-            var strNums = numbers.Select(n => n.ToString());
-            foreach (var str in strNums)
-            {
-                Console.Write(str + " ");
-            }
-
-
-            //6.1-4
-            Console.WriteLine();
-            Console.WriteLine("______________6.1-4______________");
-            var sorte = numbers.OrderBy(x => x);
-            foreach (var item in sorte.Take(3))
-            {
-                Console.Write(item + " ");
-            }
-            //6.1-5
-            Console.WriteLine();
-            Console.WriteLine("______________6.1-5______________");
-            Console.WriteLine( numbers.Distinct().Count(n => n > 10));
-
-            //6.2-1
-
-
-
-
-
             var books = new List<Book> {
-  
+
                 new Book { Title = "C#プログラミングの新常識", Price = 3800, Pages = 378 },
                 new Book { Title = "ラムダ式とLINQの極意", Price = 2500, Pages = 312 },
                 new Book { Title = "ワンダフル・C#ライフ", Price = 2900, Pages = 385 },
@@ -67,6 +30,47 @@ namespace Chapter6
 
             };
 
+            Console.WriteLine("___________6.2-1______________");
+            var book = books.FirstOrDefault(b => b.Title == "ワンダフル・C#ライフ");
+            if (book != null)
+            {
+                Console.WriteLine($"{book.Price} {book.Pages}");
+            }
+
+            Console.WriteLine("___________6.2-2______________");
+            Console.WriteLine(books.Count(x => x.Title.Contains("C#"))+"冊");
+
+            
+            Console.WriteLine("___________6.2-3______________");
+
+            var average = books.Where(b => b.Title.Contains("C#")).Average(b => b.Pages);
+
+            Console.WriteLine(average);
+
+            Console.WriteLine("___________6.2-4______________");
+            var bok = books.FirstOrDefault(b => b.Price >= 4000);
+            if (bok != null)
+            {
+                Console.WriteLine(bok.Title);
+            }
+
+            Console.WriteLine("___________6.2-5______________");
+            var pages = books.Where(b => b.Price < 4000).Max(b=>b.Pages);
+            Console.WriteLine(pages);
+
+            Console.WriteLine("___________6.2-6______________");
+            var selected = books.Where(b => b.Pages >= 400).OrderByDescending(b => b.Price);
+            foreach (var item in selected)
+            {
+                Console.WriteLine($"{book.Title} {book.Price}");
+            }
+
+            Console.WriteLine("___________6.2-7______________");
+            var selecte = books.Where(b => b.Title.Contains("C#") && b.Pages <= 500);
+            foreach (var item in books)
+            {
+                Console.WriteLine(item.Title);
+            }
         }
 
 
