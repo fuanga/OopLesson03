@@ -29,6 +29,25 @@ namespace Chapter6
                 new Book { Title = "楽しいC#プログラミング教室", Price = 2540, Pages = 348 },
 
             };
+            //全ての書籍から「C#」の文字がいくつあるかをカウントする
+
+            int count = 0;
+
+            foreach (var boo in books)
+            {
+
+
+                for (int i = 0; i < boo.Title.Length -1; i++)　//なんか-1したらエラーが消えるらしい
+                {
+                    if ((boo.Title[i] == 'C') && (boo.Title[i + 1] == '#')) 
+                    {
+                        count++;
+                    }
+                }
+            }
+            Console.WriteLine($"「C#」の個数は{count}です");
+
+           
 
             Console.WriteLine("___________6.2-1______________");
             var book = books.FirstOrDefault(b => b.Title == "ワンダフル・C#ライフ");
