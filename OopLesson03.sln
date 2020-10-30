@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter6", "Chapter6\Chapte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter7", "Chapter7\Chapter7.csproj", "{BE5490DD-6652-478F-95D1-2962F127846C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApplication", "SampleApplication\SampleApplication.csproj", "{426CF602-12C1-4F95-8814-4EDF8A98A951}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendMailApp", "SendMailApp\SendMailApp.csproj", "{3C57D479-4622-43E2-97B0-626974B5412E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{BE5490DD-6652-478F-95D1-2962F127846C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE5490DD-6652-478F-95D1-2962F127846C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE5490DD-6652-478F-95D1-2962F127846C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{426CF602-12C1-4F95-8814-4EDF8A98A951}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{426CF602-12C1-4F95-8814-4EDF8A98A951}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{426CF602-12C1-4F95-8814-4EDF8A98A951}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{426CF602-12C1-4F95-8814-4EDF8A98A951}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C57D479-4622-43E2-97B0-626974B5412E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C57D479-4622-43E2-97B0-626974B5412E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C57D479-4622-43E2-97B0-626974B5412E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C57D479-4622-43E2-97B0-626974B5412E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
