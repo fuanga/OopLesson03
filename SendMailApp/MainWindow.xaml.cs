@@ -53,19 +53,14 @@ namespace SendMailApp
             {
                 MailMessage msg = new MailMessage("ojsinfosys01@gmail.com", tbTo.Text);
 
-                msg.To.Add(tbTo.Text); 
-                if (tbCc.Text == "")
-                {  
-                }
-                else
+                //msg.To.Add(tbTo.Text)上の使うならいらんらしい; 
+                if (tbCc.Text != "")
                 {
                     msg.CC.Add(tbCc.Text);
                 }
 
-                if (tbBcc.Text == "")
-                {
-                }
-                else
+
+                if (tbBcc.Text != "") 
                 {
                     msg.Bcc.Add(tbBcc.Text);
                 }
