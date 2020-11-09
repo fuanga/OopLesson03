@@ -20,6 +20,7 @@ namespace SendMailApp
     /// </summary>
     public partial class ConfigWindows : Window
     {
+       
         public ConfigWindows()
         {
             InitializeComponent();
@@ -38,7 +39,33 @@ namespace SendMailApp
         //適用(更新)
         private void btApply_Click(object sender, RoutedEventArgs e)
         {
-            (Config.GetInstance()).UpdateStatus(tbSmtp.Text, tbUserName.Text, tbPassWord.Password, int.Parse(tbPort.Text), cbSsl.IsEnabled);
+            (Config.GetInstance()).UpdateStatus(
+                tbSmtp.Text, tbUserName.Text,
+                tbPassWord.Password,
+                int.Parse(tbPort.Text), cbSsl.IsChecked ?? false);
+        }
+
+        //OK
+        private void btOK_Click(object sender, RoutedEventArgs e)
+        {
+            btApply_Click(sender, e);
+            this.Close();
+        }
+
+        //キャンセル
+        private void btCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        //ロード時に一度だけ呼び出される
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            tbSmtp.Text = Config.GetInstance().Smtp;
+            tbPort.Text = Config.GetInstance().Port.ToString();
+            tbSender.Text = Config.GetInstance().MailAddress;
+            tbPassWord.Password = Config.GetInstance().PassWord;
+            cbSsl.IsChecked = Config.GetInstance().Ssl;
+            tbUserName.Text = Config.GetInstance().MailAddress;
         }
     }
 }

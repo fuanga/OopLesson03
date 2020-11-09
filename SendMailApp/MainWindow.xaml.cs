@@ -51,7 +51,7 @@ namespace SendMailApp
         {
             try
             {
-                MailMessage msg = new MailMessage("ojsinfosys01@gmail.com", tbTo.Text);
+                MailMessage msg = new MailMessage("ojsinfosys01@gmail.com", tbTo.Text); 
 
                 //msg.To.Add(tbTo.Text)上の使うならいらんらしい; 
                 if (tbCc.Text != "")
