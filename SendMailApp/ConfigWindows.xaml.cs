@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xaml;
+using System.Xml.Serialization;
 
 namespace SendMailApp
 {
@@ -43,6 +45,7 @@ namespace SendMailApp
                 tbSmtp.Text, tbUserName.Text,
                 tbPassWord.Password,
                 int.Parse(tbPort.Text), cbSsl.IsChecked ?? false);
+            
         }
 
         //OK
@@ -50,12 +53,15 @@ namespace SendMailApp
         {
             btApply_Click(sender, e);
             this.Close();
+
         }
 
         //キャンセル
         private void btCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+           
+            
         }
         //ロード時に一度だけ呼び出される
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -67,5 +73,10 @@ namespace SendMailApp
             cbSsl.IsChecked = Config.GetInstance().Ssl;
             tbUserName.Text = Config.GetInstance().MailAddress;
         }
+
+        
+
+
+        
     }
 }

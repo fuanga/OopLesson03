@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Animation;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace SendMailApp
 {
     public class Config
     {
+        //単一のインスタンス
         private static Config instance;
 
         public static Config GetInstance()
@@ -68,6 +72,26 @@ namespace SendMailApp
 
 
             return true;
+        }
+
+        public void Serialise() //シリアル化
+        {
+           
+            using(var weirte = XmlWriter.Create("config.xml"))
+            {
+                var serializer = new XmlSerializer(instance.GetType());
+                serializer.Serialize(weirte,instance);
+            }
+          
+        }
+
+        public void DeSerialise() //逆シリアル化
+        {
+            using (var reader = XmlReader.Create("config.xml"))
+            {
+                var serializer = new XmlSerializer(typeof(Config));
+                instance = serializer.Deserialize(reader) as Config;
+            }
         }
 
         

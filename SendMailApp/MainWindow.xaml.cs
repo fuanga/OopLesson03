@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -94,8 +95,13 @@ namespace SendMailApp
             sc.SendAsyncCancel();
         }
 
-        //設定画面表示
+        //設定ボタンの
         private void btConfig_Click(object sender, RoutedEventArgs e)
+        {
+            ConfigWindowShow();
+        }
+        //設定画面表示
+        private static void ConfigWindowShow()
         {
             ConfigWindows configWindows = new ConfigWindows();　//設定画面のインスタンスを生成
             configWindows.ShowDialog(); //表示
@@ -104,7 +110,33 @@ namespace SendMailApp
         //メインウィンドウがロードされるタイミングで
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                Config.GetInstance().DeSerialise();//逆シリアル化 xml→オブジェクト
+            }
+            catch (FileNotFoundException)
+            {
+                ConfigWindowShow();//ファイルがないから先に設定画面を表示する
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                
+            }
+            
+        }
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                Config.GetInstance().Serialise(); //シリアル化　
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }
