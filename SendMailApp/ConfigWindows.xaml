@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SendMailApp"
         mc:Ignorable="d"
-        Title="メール送信設定" Height="410" Width="700" ResizeMode="NoResize" Loaded="Window_Loaded">
+        Title="メール送信設定" Height="410" Width="700" ResizeMode="NoResize" Loaded="Window_Loaded" >
     <Grid Background="AliceBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
@@ -39,7 +39,7 @@
                 <TextBox x:Name="tbPort" Grid.Row="0" Grid.Column="3" Margin="5,20" />
 
                 <TextBlock Grid.Row="1" Grid.Column="2" Text="パスワード:"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                           HorizontalAlignment="Center" VerticalAlignment="Center" />
                 <PasswordBox x:Name="tbPassWord" Grid.Row="1" Grid.Column="3" Margin="5,20" />
                 <CheckBox x:Name="cbSsl" Grid.Row="3" Grid.Column="3" Content="SSL有効"
                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -61,7 +61,7 @@
 
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="送信元:"
                            HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBox x:Name="tbSender" Grid.Row="1" Grid.Column="1" Margin="5" />
+                <TextBox x:Name="tbSender" Grid.Row="1" Grid.Column="1" Margin="5"  />
             </Grid>
         </GroupBox>
         <Grid Grid.Row="2" Background="Aqua"> 

@@ -40,19 +40,31 @@ namespace SendMailApp
         }
         //適用(更新)
         private void btApply_Click(object sender, RoutedEventArgs e)
-        {
-            (Config.GetInstance()).UpdateStatus(
-                tbSmtp.Text, tbUserName.Text,
-                tbPassWord.Password,
-                int.Parse(tbPort.Text), cbSsl.IsChecked ?? false);
-            
+        {              
+            if (SpaceCheck())
+            {
+                MessageBox.Show("空欄があるため変更できません");
+                
+            }
+            else
+            {
+                (Config.GetInstance()).UpdateStatus(
+               tbSmtp.Text, tbUserName.Text,
+               tbPassWord.Password,
+               int.Parse(tbPort.Text), cbSsl.IsChecked ?? false);
+            }
         }
 
         //OK
         private void btOK_Click(object sender, RoutedEventArgs e)
         {
             btApply_Click(sender, e);
-            this.Close();
+            if (!SpaceCheck())
+            {
+                this.Close();
+            }
+            
+           
 
         }
 
@@ -74,9 +86,18 @@ namespace SendMailApp
             tbUserName.Text = Config.GetInstance().MailAddress;
         }
 
-        
+        private bool SpaceCheck()
+        {
+            if (tbSmtp.Text =="" || tbPort.Text =="" || tbSender.Text == "" || tbPassWord.Password =="" || tbUserName.Text == "")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }  
+        }
 
-
-        
+      
     }
 }
