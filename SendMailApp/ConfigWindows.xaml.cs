@@ -64,7 +64,7 @@ namespace SendMailApp
                 this.Close();
             }
             
-           
+            
 
         }
 
@@ -98,6 +98,22 @@ namespace SendMailApp
             }  
         }
 
-      
+
+       
+           
+        private void Config_TextChanged(object sender, TextChangedEventArgs e)     
+        {
+
+          
+             MessageBox.Show("なんか", "警告", MessageBoxButton.OKCancel);
+        
+        }
+        
+          
+
+                
+            
+        
+       
     }
 }
