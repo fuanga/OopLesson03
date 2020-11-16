@@ -22,7 +22,12 @@ namespace SendMailApp
     /// </summary>
     public partial class ConfigWindows : Window
     {
-       
+        string Smtpcheck ;
+        string Portcheck ;
+        string Sendercheck ;
+        string PassWordchek;
+        string UserNamecheck;
+
         public ConfigWindows()
         {
             InitializeComponent();
@@ -32,11 +37,11 @@ namespace SendMailApp
         {
             Config cf = (Config.GetInstance()).getDefaultStatus();
 
-            tbSmtp.Text = cf.Smtp;
-            tbPort.Text = cf.Port.ToString();
-            tbSender.Text = tbUserName.Text = cf.MailAddress;
-            tbPassWord.Password = cf.PassWord;
-            cbSsl.IsChecked = cf.Ssl;
+         tbSmtp.Text = cf.Smtp;
+         tbPort.Text = cf.Port.ToString();
+         tbSender.Text = tbUserName.Text = cf.MailAddress;
+         tbPassWord.Password = cf.PassWord;
+         cbSsl.IsChecked = cf.Ssl;
         }
         //適用(更新)
         private void btApply_Click(object sender, RoutedEventArgs e)
@@ -53,6 +58,11 @@ namespace SendMailApp
                tbPassWord.Password,
                int.Parse(tbPort.Text), cbSsl.IsChecked ?? false);
             }
+            Smtpcheck = tbSmtp.Text;
+            Portcheck = tbPort.Text;
+            Sendercheck = tbSender.Text;
+            PassWordchek = tbPassWord.Password;
+            UserNamecheck = tbUserName.Text;
         }
 
         //OK
@@ -71,7 +81,8 @@ namespace SendMailApp
         //キャンセル
         private void btCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+             ChangeCheck();
+            //this.Close();
            
             
         }
@@ -84,6 +95,12 @@ namespace SendMailApp
             tbPassWord.Password = Config.GetInstance().PassWord;
             cbSsl.IsChecked = Config.GetInstance().Ssl;
             tbUserName.Text = Config.GetInstance().MailAddress;
+
+            Smtpcheck = tbSmtp.Text;
+            Portcheck = tbPort.Text;
+            Sendercheck = tbSender.Text;
+            PassWordchek = tbPassWord.Password;
+            UserNamecheck = tbUserName.Text;
         }
 
         private bool SpaceCheck()
@@ -98,22 +115,38 @@ namespace SendMailApp
             }  
         }
 
+        private void ChangeCheck()
+        {
+            
+            if (tbSmtp.Text == Smtpcheck && Portcheck == tbPort.Text && Sendercheck == tbSender.Text && PassWordchek == tbPassWord.Password && UserNamecheck == tbUserName.Text)
+            {
+            }
+            else
+            {
+             var OKcanselcheck  = MessageBox.Show("変更が反映されていません", "警告", MessageBoxButton.OKCancel);
+                if (OKcanselcheck == MessageBoxResult.Cancel)
+                {
+                }
+                else
+                {
+                    this.Close();
+                }
+            } 
+        }
 
-       
-           
+
+
+
         private void Config_TextChanged(object sender, TextChangedEventArgs e)     
         {
-
-          
-             MessageBox.Show("なんか", "警告", MessageBoxButton.OKCancel);
-        
-        }
-        
-          
-
-                
             
-        
-       
+
+        }
+
+
+
+
+
+
     }
 }
