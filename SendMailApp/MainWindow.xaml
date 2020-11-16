@@ -17,7 +17,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -27,6 +28,7 @@
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Cc:" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20"/>
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Bcc:" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20"/>
         <TextBlock Grid.Row="4" Grid.Column="0" Text="本文:" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="添付:" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="20"/>
 
         <TextBox x:Name="tbTitle" Grid.Row="0" Grid.Column="1" Margin="10"/>
         <TextBox x:Name="tbTo" Grid.Row="1" Grid.Column="1" Margin="10"/>
@@ -34,12 +36,17 @@
         <TextBox x:Name="tbBcc" Grid.Row="3" Grid.Column="1" Margin="10" />
         <TextBox x:Name="tbBody" Grid.Row="4" Grid.Column="1" Margin="10"/>
 
-        <StackPanel Grid.Row="5" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Right" >
+        <ListBox x:Name="lbAttached" Grid.Row="5" Grid.Column="2" />
+
+        <StackPanel Grid.Row="6" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Right" >
+            <Button x:Name="btAttached" Content="添付ファイル" Width="100" Margin="5" Click="btAttached_Click"/>
+            <Button x:Name="btAttachedDelet" Content="添付削除" Width="100" Margin="5" Click="btAttachedDelet_Click"/>
             <Button x:Name="btCancel" Content="キャンセル" Width="100" Margin="5" Click="btCancel_Click"/>
             <Button x:Name="btOk" Content="送信" Width="100" Margin="5" Click="btOk_Click"/>
             
+            
         </StackPanel>
-        <Button x:Name="btConfig" Grid.Row="5" Margin="5" Content="設定" Click="btConfig_Click"/>
+        <Button x:Name="btConfig" Grid.Row="6" Margin="5" Content="設定" Click="btConfig_Click"/>
 
     </Grid>
 </Window>

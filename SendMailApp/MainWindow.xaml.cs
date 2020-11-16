@@ -138,5 +138,15 @@ namespace SendMailApp
             }
             
         }
+
+        private void btAttached_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void btAttachedDelet_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
